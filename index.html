@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- CSS only -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Coding Bootcamp Testimonials Slider</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    
+    body{
+      
+    }
+    .background{
+      position:fixed;
+      width:100vw;
+      height:100vh;
+      margin:0;
+      padding:0;
+    }
+    .curve{
+      position:relative;
+      margin-top:540px;
+      float:left;
+
+    }
+    .quote{
+      position:relative;
+      float:left;
+      right:220px;
+      top:160px;
+    }
+    .wave{
+      position:relative;
+    }
+    .image{
+      position:fixed;
+      left:850px;
+      top:100px;
+     
+      border-radius:10px;
+    }
+    .image1{
+      z-index:2;
+      height:500px;
+      width:500px;
+    }
+
+    .text{
+      position:fixed;
+      top:220px;
+      left:270px;
+      font-family:Inter;
+      font-weight:500;
+      width:700px;
+      font-size:1.7em;
+      z-index:3;
+    }
+    .name{
+      font-size:0.7em;
+      font-weight:700;
+
+    }
+    .designation{
+      font-size:0.6em;
+      font-weight:300;
+      color:lightgray;
+    }
+    .buttons{
+      position:relative;
+      z-index:3;
+      bottom:30px;
+      left:70px;
+      background-color:white;
+      border-radius:30px;
+      width:100px;
+      height:40px;
+      box-shadow:1px 5px 15px 1px lightblue;
+
+    }
+    .image2{
+      transition:all 4s ease;
+    }
+
+    .prev-btn {
+      margin-top: 10px;
+      margin-right:12px;
+      float:right;
+    }
+
+    .next-btn{
+      margin-top:10px;
+      float:left;
+      margin-left:12px;
+    }
+
+    @media(max-width: 400px){
+      .wave{
+        margin-top: 70px;
+        height:370px;
+      }
+      .curve{
+        margin:auto;
+        height:100px;
+        float:left;
+        top:280px;
+      }
+      .quote{
+        height:80px;
+        position:absolute;
+        top:450px;
+        left:160px;
+
+      }
+      .image{
+        position:fixed;
+
+        top:100px;
+        left:70px;
+      }
+
+      .image1{
+        height:300px;
+        width:300px;
+        border-radius:10px;
+        box-shadow: 0px 0px 10px 0px lightgray;
+      }
+
+      .buttons{
+        margin-left:30px;
+      }
+      .text{
+        position:fixed;
+        top:500px;
+        left:60px;
+        font-size: 20px;
+        width : 330px;
+      }
+    }
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+<div class="background">
+  <img class="wave" src = "images/pattern-bg.svg">
+  <img class="curve" src = "images/pattern-curve.svg">
+  <img class="quote" src="images/pattern-quotes.svg">
+</div>
+<div class="text">
+  <p id ="testimonial">“ If you want to lay the best foundation possible I’d recommend taking this course. 
+    The depth the instructors go into is incredible. I now feel so confident about 
+    starting up as a professional developer. ”</p>
+  <p><span class="name" id="username">John Tarkpor</span>  <span class="designation" id="role">Junior Front-end Developer</span></p>
+</div>
+<div class="image">
+  <img id="image2" class="image1" src="images/image-john.jpg">
+  <div class="buttons">
+  <img class="next-btn" id="next-btn" src ="images/icon-prev.svg">
+  <img class="prev-btn" id = "prev-btn"src = "images/icon-next.svg">
+  </div>
+</div>
+
+
+  
+
+  </div>
+</body>
+<script>
+  const tanya = {
+    username: 'Tanya Sinclair', 
+    role: 'UX Engineer',
+    testimonial: '"I’ve been interested in coding for a while but never taken the jump, until now. I couldn’t recommend this course enough. I’m now in the job of my dreams and so excited about the future."',
+    picture: './images/image-tanya.jpg'
+}
+const john = {
+    username: 'John Tarkpor', 
+    role: 'Junior Front-end Developer',
+    testimonial: '"If you want to lay the best foundation possible I’d recommend taking this course. The depth the instructors go into is incredible. I now feel so confident about starting up as a professional developer."',
+    picture: './images/image-john.jpg'
+}
+let n =0;
+const person = [tanya,john];
+console.log(person[1]);
+var next = document.getElementById("next-btn");
+next.addEventListener("click",function(){
+  let picture = document.getElementById("image2");
+  let testimonial = document.getElementById("testimonial");
+  let role = document.getElementById("role");
+  let name =document.getElementById("username");
+  testimonial.innerHTML = person[n].testimonial;
+  role.innerHTML = person[n].role;
+  picture.src = person[n].picture;
+  username.innerHTML = person[n].username;
+  if(n==0){
+    n = 1;
+  }
+  else{
+    n = 0;
+  }
+
+})
+
+let prev = document.getElementById("prev-btn");
+prev.addEventListener("click",function(){
+  let picture = document.getElementById("image2");
+  let testimonial = document.getElementById("testimonial");
+  let role = document.getElementById("role");
+  let name =document.getElementById("username");
+  testimonial.innerHTML = person[n].testimonial;
+  role.innerHTML = person[n].role;
+  picture.src = person[n].picture;
+  
+  username.innerHTML = person[n].username;
+  if(n==0){
+    n = 1;
+  }
+  else{
+    n = 0;
+  }
+
+})
+
+</script>
+</html>
